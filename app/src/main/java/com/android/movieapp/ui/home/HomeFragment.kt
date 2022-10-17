@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.movieapp.data.model.MovieData
 import com.android.movieapp.databinding.FragmentHomeBinding
@@ -44,8 +45,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun initView() {
-        val layoutManager = LinearLayoutManager(requireContext())
-        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
+        val layoutManager = GridLayoutManager(requireContext(), 2)
+//        layoutManager.orientation = LinearLayoutManager.HORIZONTAL
         binding.rvMovies.layoutManager = layoutManager
         binding.rvMovies.adapter = moviePageAdapter
         binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
