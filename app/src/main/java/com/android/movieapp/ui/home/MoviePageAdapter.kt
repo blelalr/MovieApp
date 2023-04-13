@@ -21,7 +21,6 @@ class MoviePageAdapter(private val movieOnClickListener: (MovieData) -> Unit): P
             holder.bind(movie, movieOnClickListener)
         }
 
-
     }
 }
 

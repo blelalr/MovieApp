@@ -22,8 +22,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
     private val moviePageAdapter by lazy { MoviePageAdapter { movie: MovieData ->  openMovieDetail(movie) } }
 
-
-
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -36,7 +34,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             homeViewModel.getMoviesByTabPosition(0).collectLatest {
                 moviePageAdapter.submitData(it)
             }
@@ -52,7 +50,7 @@ class HomeFragment : Fragment() {
         binding.tabLayout.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 if(tab != null) {
-                    lifecycleScope.launch {
+                    viewLifecycleOwner.lifecycleScope.launch {
                         homeViewModel.getMoviesByTabPosition(tab.position).collectLatest {
                             moviePageAdapter.submitData(it)
                         }
@@ -78,6 +76,7 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
     }
 
     companion object {

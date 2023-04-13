@@ -14,21 +14,11 @@ import kotlinx.coroutines.flow.Flow
 class HomeViewModel(private val movieRepo: MovieRepo = MovieRepo()) : ViewModel() {
     private var nowPlayingPageResult: Flow<PagingData<MovieData>>? = null
 
-//    private var tabSelectedPosition = MutableLiveData<Int>()
-
     fun getMoviesByTabPosition(position: Int): Flow<PagingData<MovieData>> {
         val newResult: Flow<PagingData<MovieData>> = movieRepo.getNowPlaying(position)
             .cachedIn(viewModelScope)
         nowPlayingPageResult = newResult
         return newResult
     }
-
-//    fun setTabSelectedPosition(position: Int) {
-//        tabSelectedPosition.value = position
-//    }
-//
-//    fun getTabSelectPosition(): LiveData<Int> {
-//        return tabSelectedPosition
-//    }
 
 }
