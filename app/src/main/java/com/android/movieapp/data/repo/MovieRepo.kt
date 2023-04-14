@@ -1,5 +1,6 @@
 package com.android.movieapp.data.repo
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -9,6 +10,7 @@ import kotlinx.coroutines.flow.Flow
 class MovieRepo {
 
     fun getNowPlaying(position: Int): Flow<PagingData<MovieData>> {
+        Log.d("esther", "NowPlaying : $position")
         return Pager(
             config = PagingConfig(pageSize = NETWORK_PAGE_SIZE, enablePlaceholders = false),
             pagingSourceFactory = { MoviePagingSource(position) }

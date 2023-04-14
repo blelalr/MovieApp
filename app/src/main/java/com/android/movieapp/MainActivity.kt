@@ -1,6 +1,7 @@
 package com.android.movieapp
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         navView.setupWithNavController(navController)
-
+        Log.d("esther", "logggggggg")
 //        val navController = findNavController(R.id.nav_host_fragment)
 //        // Passing each menu ID as a set of Ids because each
 //        // menu should be considered as top level destinations.

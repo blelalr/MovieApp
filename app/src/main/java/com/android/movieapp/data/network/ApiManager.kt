@@ -12,6 +12,7 @@ object ApiManager {
 
     suspend fun getNowPlaying(pageIndex: Int): LoadResult<Int, MovieData> {
         return try {
+            Log.d("esther", "NowPlaying : $pageIndex")
             val response = apiService.getNowPlayingMovies(page = pageIndex)
             val repos = response.movies
             val nextKey = if (repos.isEmpty()) {
@@ -34,6 +35,7 @@ object ApiManager {
 
     suspend fun getPopularMovie(pageIndex: Int): LoadResult<Int, MovieData> {
         return try {
+            Log.d("esther", "PopularMovie : $pageIndex")
             val response = apiService.getPopularMovies(page = pageIndex)
             val repos = response.movies
             val nextKey = if (repos.isEmpty()) {
@@ -56,6 +58,7 @@ object ApiManager {
 
     suspend fun getTopRate(pageIndex: Int): LoadResult<Int, MovieData> {
         return try {
+            Log.d("esther", "getTopRate : $pageIndex")
             val response = apiService.getTopRatedMovies(page = pageIndex)
             val repos = response.movies
             val nextKey = if (repos.isEmpty()) {
@@ -77,6 +80,7 @@ object ApiManager {
 
     suspend fun getUpComing(pageIndex: Int): LoadResult<Int, MovieData> {
         return try {
+            Log.d("esther", "getUpComing : $pageIndex")
             val response = apiService.getUpcomingMovies(page = pageIndex)
             val repos = response.movies
             val nextKey = if (repos.isEmpty()) {

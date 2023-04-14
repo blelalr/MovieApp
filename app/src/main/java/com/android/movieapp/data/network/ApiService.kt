@@ -1,6 +1,7 @@
 package com.android.movieapp.data.network
 
 import com.android.movieapp.data.model.*
+import org.intellij.lang.annotations.Language
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,22 +29,30 @@ interface ApiService {
 
     @GET("/3/movie/now_playing")
     suspend fun getNowPlayingMovies(
-        @Query("page") page: Int = 1
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = ApiConstant.API_KEY_V3,
+        @Query("language") language: String = ApiConstant.LANGUAGE
     ): MoviePageData
 
     @GET("/3/movie/popular")
     suspend fun getPopularMovies(
-        @Query("page") page: Int = 1
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = ApiConstant.API_KEY_V3,
+        @Query("language") language: String = ApiConstant.LANGUAGE
     ): MoviePageData
 
     @GET("/3/movie/top_rated")
     suspend fun getTopRatedMovies(
-        @Query("page") page: Int = 1
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = ApiConstant.API_KEY_V3,
+        @Query("language") language: String = ApiConstant.LANGUAGE
     ): MoviePageData
 
     @GET("/3/movie/upcoming")
     suspend fun getUpcomingMovies(
-        @Query("page") page: Int = 1
+        @Query("page") page: Int = 1,
+        @Query("api_key") apiKey: String = ApiConstant.API_KEY_V3,
+        @Query("language") language: String = ApiConstant.LANGUAGE
     ): MoviePageData
 
 }
